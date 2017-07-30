@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>DAMOA 2.0 ; Drag-Able Multilingual meta-search system using Open apis and Ajax for web2.0</title>
+	<link rel="stylesheet" href="css/dragable-boxes.css" type="text/css">
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/browser.js"></script>
+	<script type="text/javascript" src="js/api/naver.js"></script>
+	<script type="text/javascript" src="js/api/google.js"></script>
+	<script type="text/javascript" src="js/dragable-boxes.js"></script>
+	<script type="text/javascript" src="js/drag-drop.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+	<script src="/jsapi?key=internal" type="text/javascript"></script>
+	<script type="text/javascript" src="http://map.naver.com/js/naverMap.naver?key=8fbc8bc9ad156420d43c8a5d0e071351"></script>
+	<script type="text/javascript" src="http://apis.daum.net/maps/maps2.js?apikey=5980040a4b9dfaff826a319a0dcd87514a64a868" charset="utf-8"></script>
+	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAU3oPnPUTK4p6fuHoLCdYSRQsI7D0bbMbR5uKuoSpMUWbDnYxQBT_6vpxZeWyeCuEv16iN_0pYLtvEw" type="text/javascript"></script>
+	<script>
+		function autoblur() {
+        	if(event.srcElement.tagName == "A") document.body.focus();
+		}
+		document.onfocusin = autoblur;
+	</script>
+	<script type="text/javascript">
+			google.load("language", "1");
+		    google.setOnLoadCallback(init);
+
+			// Google 번역 API 생성자 함수.
+  			function init() {
+      			var src = document.getElementById('transSrc');
+      			var dst = document.getElementById('transDst');
+      			var i=0;
+				
+      			for (l in google.language.Languages) {
+        			var lng = l.toLowerCase();
+        			var lngCode = google.language.Languages[l];
+        			if (google.language.isTranslatable(lngCode)) {
+          				src.options.add(new Option(lng, lngCode));
+          				dst.options.add(new Option(lng, lngCode));
+        			}
+      			}
+
+      			submitChange();
+    		}
+
+			// Google 번역 API 실행 함수.
+    		function submitChange() {
+      			var value = document.getElementById('inputQuery').value;
+      			var src = document.getElementById('transSrc').value;
+      			var dest = document.getElementById('transDst').value;
+      			google.language.translate(value, src, dest, translateResult);
+      			return false;
+    		}
+
+			// Google 번역 API 결과값 적용 함수.
+    		function translateResult(result) {
+      			if (result.translation) {
+        			var transFinalResult = result.translation.replace('>', '&gt;').replace('<', '&lt;');
+        			document.getElementById('inputQuery').value = transFinalResult;
+      			}
+    		}
+	</script>
+	
+	<script type="text/javascript">
+		// 검색창 Enter 키 방지
+        function NoEnterKey(event) {
+			var keycode = window.event ? event.keyCode : event.which;
+			if (keycode == 13) {
+				alert("Enter 키는 허용하지 않습니다.");
+			}
+		}
+	</script>	
+</head>
+<body>
+
+<div id="mainContainer" onmouseup="queryCancel();return false;">
+
+	<div id="header"><a href="index.html"><img src="images/logo.gif"></a></div><div id="adds"><a href="#" onclick="javascript:window.open('help.html','','width=800,height=600,scrollbars=yes');"><img src="images/guide.gif"></a><div id="addNewFeed"><table width='250' cellpadding="0" cellspacing="0"><tr><td colspan="2"></td></tr>
+					<tr><td> API url: </td>
+						<td><form method="post" action="#"><input type="text" name="rssUrl" size="30" value="http://xml.weather.yahoo.com/forecastrss?p=KSXX0037&u=f" maxlength="255"><input type="button" onclick="createUserFeed(this.form)" value="Create">
+					<!--/*<br><A href="#" onclick="resetDragableBoxes();return false">Reset back to default</A>*/--></form></td>
+					</tr>				
+						<input type="hidden" name="items" value="10" size="2" maxlength="2">
+						<input type="hidden" name="reloadInterval" value="10" size="2" maxlength="2">
+						<input type="hidden" name="height" value="150" size="2" maxlength="3"></table></div>
+	</div>
+	
+	<!-- 메뉴 출력 영역. -->
+	<div id="menu"><span>
+<a href="#" id="rank" class="icon"><img src="images/m_search.gif"></a><img src="images/m_index.gif">
+<a href="#" id="flickrimage" class="icon"><img src="images/flickr_image.gif"></a>
+<a href="#" id="naverimage" class="icon"><img src="images/naver_image.gif"></a>
+<a href="#" id="daumimage" class="icon"><img src="images/daum_image.gif"></a><img src="images/m_index.gif">
+<a href="#" id="news" class="icon"><img src="images/m_news.gif"></a><img src="images/m_index.gif">
+<a href="#" id="jisik" class="icon"><img src="images/m_jisik.gif"></a><img src="images/m_index.gif">
+<a href="#" id="youtubevideo" class="icon"><img src="images/youtube_video.gif"></a>
+<a href="#" id="video" class="icon"><img src="images/daum_video.gif"></a><img src="images/m_index.gif">
+<a href="#" id="blog" class="icon"><img src="images/m_blog.gif"></a><img src="images/m_index.gif">
+<a href="#" id="trans" class="icon"><img src="images/m_tran.gif"></a><img src="images/m_index.gif">
+<a href="#" id="googlemap" class="icon"><img src="images/google_map.gif"></a>
+<a href="#" id="navermap" class="icon"><img src="images/naver_map.gif"></a>
+<a href="#" id="daummap" class="icon"><img src="images/daum_map.gif"></a></span></div>
+
+<!-- 사용자가 검색어를 입력하고 번역을 수행하는 영역. -->
+<div id="searchBar"><form method="post" action="#"><span id="desc">검색어를 입력하고 원하는 창으로 드래그&amp;드롭 하세요☞</span><input type="text" id="inputQuery" name="userText" onmouseup="inputCheck();return false;" onmousedown="return queryStart(0);" value="검색어를 입력하세요." onblur="if(this.value=='') this.value='검색어를 입력하세요.';" onfocus="if(this.value=='검색어를 입력하세요.') this.value='';" onKeyDown="NoEnterKey(event);" style="border-width:3px; border-color:black; border-style:solid;"></form>&nbsp;&nbsp;&nbsp;
+		<form class="query-box" onsubmit="return submitChange();">
+  		<select name="transSrc" id="transSrc"></select>  =&gt;  <select name="transDst" id="transDst"></select>
+		<input class="button" type="submit" value="번역" style="width:50px;"/>
+		</form>
+</div>
+<!-- 생성된 컨텐츠 창이 출력되는 영역. -->
+<div id="floatingBoxParentContainer"></div>
+</div>
+</body>
+</html>

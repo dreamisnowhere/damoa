@@ -1,0 +1,241 @@
+	body{
+		font-family: "굴림";	/* Font to use */
+		background-color:#efefef;
+		font-size:9pt;
+		margin:0px;
+		padding:0px;
+		height:100%;
+		width:100%;
+		text-align:center;
+		
+		
+	}
+	body a{
+		text-decoration:none;
+	}
+	input{
+		font-size:10px;
+	}
+	#mainContainer{
+		width:100%;
+		margin:0 auto;
+		text-align:left;
+		height:100%;		
+		padding-bottom:30px;
+	}
+	
+	#header{
+		/* Header at the top of the demo */
+		background-image:url('../images/header_bg.gif');
+		background-repeat:repeat-x;
+		background-color:#FFFFFF;
+		height:130px;
+		border-bottom: 1px solid #000000;
+	
+	}	/* Logo image */
+	#header img{
+		margin-left: 80%;
+		}
+	
+	#menu{
+		/*background-image:url('../images/menu_bg.gif');*/		
+		position: absolute;
+		height: 10px;
+		border: 0px solid red;
+		top: 110px;
+		z-index: 0;
+		
+	}
+	#menu span{
+	text-align:left;
+	margin-left:50px;}
+	
+	#menu img{
+			margin-right:10px;
+		}
+	
+	#adds{
+		position:absolute;
+		top:100px;
+		left:75%;
+		width:300px;
+		heght:30px;
+		border: 0px solid red;
+		z-index:0;
+	}
+	#adds img{
+		cursor:pointer;
+		height:30px;
+	}
+	
+	#addNewFeed{
+		background-color:#e85252;
+		width:250px;
+		height:40px;		
+		border:0px solid green;
+		padding: 3px;
+		margin-left:4px;
+		display:none;
+		z-index:0;
+	}
+	
+	#searchBar{
+		height:30px;
+		background-color: #ebebeb;
+		border-top:1px solid #000000;
+		border-bottom:1px solid #fff;
+		vertical-align:middle;
+	}
+	
+	#searchBar input{
+		border:0px;
+		width: 200px;
+		height:15px;
+		font-size:9pt;
+		background-color: #ddd;
+		margin-top:5px;
+		margin-left:20px;
+	}
+	
+	#searchBar span{
+		font-family: "굴림", verdana;
+		font-size: 8pt;
+		margin-left:50px;
+		}
+	
+	#options{
+		position:relative;
+		top:0px;
+		width:100px;
+		height:30px;
+		float:right;
+		border: 0px solid #6666CC;
+		}
+	
+	#floatingBoxParentContainer{
+
+		}
+	.dragableBox{	/* The RSS box */
+		
+		background-color:#FFF;
+		margin:5px;
+		/*border-right:2px solid #AAA;	/* "Shadow "*/
+		/*border-bottom:2px solid #AAA;	/* "Shadow " */
+	}
+	/* A div inside the rss box - with a blue border */
+	.dragableBoxInner{
+		border:1px solid #ccc;
+	}
+	.dragableBoxHeader{	/* Header inside RSS box */
+
+		background-image: url(../images/box_bg.gif);
+		background-repeat:repeat-x;
+		background-color: #ccc;
+		height:20px;
+		font-weight:bold;
+		font-size:8pt;
+		font-family: '굴림'; 
+		color: #555;
+		padding-top: 5px;
+		padding-bottom: 1px;
+		
+	}
+	.dragableBoxHeader span{	/* Text inside header of RSS box */
+		/*line-heigth:20px;*/
+		padding-top: 1px;
+		
+		
+	}
+	.dragableBoxHeader img,.dragableBoxHeader span{	/* Text and reload image inside RSS box */
+		float:left;
+		
+	}
+	.boxItemHeader{	/* Title of items inside dragable boxes */
+		font-weight:bold;
+		margin:0px;
+		color:#000;
+		text-decoration:none;
+		overflow:hidden;
+		
+		
+	}	
+	.boxItemHeader:hover{	/* Title of items inside dragable boxes - mouseover*/
+		font-weight:bold;
+		margin:0px;
+		color:#F00;
+		text-decoration:underline;
+	}
+	.dragableBoxHeader input{	/* text inputs that gets visible when you click on the "edit" link at the top of a rss box */
+		font-size:8pt;	
+	}
+	
+	.rssNumberOfItems{	/* Number of RSS items in header - the one inside parantheses */
+		color:#AA4B46;
+	}
+	.dragableBoxContent{	/* DIV holding data inside dragable boxes */
+		padding:3px;
+		clear:both;
+	}
+	
+	#rectangleDiv{	/* Dotted rectangle indicating where objects will be dropped */
+		border:1px dotted #000000;
+		margin:5px;
+	}
+	
+	.closeButton{	/* Close button */
+				
+		line-height:5px;
+		
+		
+	}
+	
+	.closeButton_over{	/* Close button - mouse over */
+		
+		padding-top:1px;
+		
+				
+	}
+	.dragableBoxStatusBar{	/* Status bar at the bottom of rss boxes */
+		border-top:2px solid #ccc;
+		height:10px;
+		background-color:#f7efef;
+		padding:2px;
+	}
+	
+	.dragableBoxEditLink{	/* Edit link on top of a box */
+		color:#317082;
+		text-decoration:none;
+		padding-top:1px;
+	}
+	.dragableBoxEditLink:hover{	/* Edit link - mouse over */
+		color:red;
+		text-decoration:none;
+	}
+	form{	/* No borders in forms */
+		display:inline;
+	}
+	
+	
+	img{
+		border:0px;
+		}
+
+/*임시 css코드-정란*/
+/*dragable-boxes.js - 실시간 검색 부분활용 - 창 중간(내용부분) 설정 */
+	.boxItemRank{
+		font-family:"굴림", verdana;
+		font-size: 8pt;
+		font-weight:bold;
+		margin:0px;
+		color:#000;
+		text-decoration:none;
+		overflow:hidden;
+	}
+
+
+ .pageButton{   /* page Chage button: prev_btn, next_btn*/
+
+  cursor:pointer;
+  margin: 0px;
+  padding:0px;
+ }
